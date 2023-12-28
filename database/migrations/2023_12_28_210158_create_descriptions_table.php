@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Word;
 
 return new class extends Migration
 {
@@ -11,10 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('words', function (Blueprint $table) {
+        Schema::create('descriptions', function (Blueprint $table) {
             $table->id();
-            $table->string('ndali_word');
-            $table->string('english_word');
+            $table->foreignIdFor(Word::class);
+            $table->string('ndali_description');
+            $table->string('english_description');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('words');
+        Schema::dropIfExists('descriptions');
     }
 };
