@@ -15,7 +15,17 @@ class WordController extends Controller
      */
     public function index()
     {
-        return Inertia::render("Home/Index",['words' => Word::all()]);
+
+        $words = Word::all();
+        $words->load('description');
+
+       // return $words;
+
+        return Inertia::render("Home/Index", [
+
+            'words' => $words
+            ]
+        );
     }
 
     public function search(Request $request)
@@ -26,14 +36,6 @@ class WordController extends Controller
 
         ]);
 
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Word $word)
-    {
-        //
     }
 
 }
