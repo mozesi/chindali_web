@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Word;
 use Illuminate\Http\Request;
 
+use Inertia\Inertia;
+use Inertia\Response;
+
 class WordController extends Controller
 {
     /**
@@ -12,23 +15,17 @@ class WordController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render("Home/Index",['words' => Word::all()]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function search(Request $request)
     {
-        //
-    }
+        $validatedSearch = $request->validate([
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+            'searchWord' => 'required|string',
+
+        ]);
+
     }
 
     /**
@@ -39,27 +36,4 @@ class WordController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Word $word)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Word $word)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Word $word)
-    {
-        //
-    }
 }
