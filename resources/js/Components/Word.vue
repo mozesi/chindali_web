@@ -2,6 +2,7 @@
 import Description from '@/Components/Description.vue';
 
 defineProps(['word']);
+
 </script>
 
 <template>
@@ -21,7 +22,6 @@ defineProps(['word']);
                 </div>
             </div>
             <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
-
             <Description
 
                 v-for="description in word.description"
@@ -31,7 +31,6 @@ defineProps(['word']);
                 :description="description"
 
             />
-
             </div>
         </div>
     </div>

@@ -1,7 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Word from '@/Components/Word.vue';
-
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 
@@ -39,6 +38,8 @@ const form = useForm({
                 :key="word.id"
 
                 :word="word"
+
+                :descriptions="word.description"
 
             />
 
